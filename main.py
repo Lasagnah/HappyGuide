@@ -70,9 +70,9 @@ class helper:
 def mainLoop():
     h = helper()
     while True:
-        s = input("d to get info on today, c to update today's tasks, t to get add tasks to tomorrow, a to advance to tomorrow, o to edit daily tasks, x to exit\n")
+        s = input("press d to get info on today, c to update today's tasks, t to get add tasks to tomorrow, a to advance to tomorrow, o to edit daily tasks, x to exit\n")
         if s == "c":
-            t = input("what task would you like to update\n")
+            t = input("what task would you like to update?\n")
             b = input("t for completed, f for incomplete\n")
             if b == "t":
                 h.head.updateTask(t, True)
@@ -83,14 +83,14 @@ def mainLoop():
         elif s == "o":
 
             while True:
-                s = input("r to remove a daily task, p to print daily tasks, a to add a daily task, x to go back")
+                s = input("press r to remove a daily task, p to print daily tasks, a to add a daily task, x to go back")
                 if s == "r":
-                    s = input("what task would you like to remove\n")
+                    s = input("what task would you like to remove?\n")
                     helper.removeDaily(s)
                 elif s == "p":
                     helper.getDaily()
                 elif s == "a":
-                    s = input("what task would you like to add\n")
+                    s = input("what task would you like to add?\n")
                     helper.addDaily(s)
                 elif s == "x":
                     break
@@ -100,7 +100,7 @@ def mainLoop():
             print(h.ratings)
             break
         elif s == "t":
-            s = input("what task would you like to add\n")
+            s = input("what task would you like to add?\n")
             h.head.next()
             h.head.next.addTask(s)
         elif s == "a":
