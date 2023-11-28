@@ -96,6 +96,8 @@ def mainLoop():
                     break
         
         elif s == "x":
+            print("Here's how you felt while using our program:")
+            print(h.ratings)
             break
         elif s == "t":
             s = input("what task would you like to add\n")
