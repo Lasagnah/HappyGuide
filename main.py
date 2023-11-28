@@ -14,13 +14,25 @@ class day:
         if task in self.tasks.keys():
             self.tasks[task] = "completed"
 
+    def updateTask(self, task, complete = False):
+        if task in self.tasks.keys():
+            if complete:
+                self.tasks[task] = "completed"
+            else:
+                self.tasks[task] = "incomplete"
+        else:
+            #If task not present, add it and check for commpleteness
+            self.addTask(task)
+            if complete:
+                self.completeTask(task)
+
     def setNext(self, next1):
         self.next = next1
 
     def getTasks(self):
-        print(self.tasks)
-        #for key, value in self.tasks:
-        #   print(key, ":", value)
+        #print(self.tasks)
+        for i in self.tasks:
+            print (i, ":", self.tasks[i])
 
 class helper:
     #This class is basically a linked list with our day objects as our nodes
@@ -34,12 +46,12 @@ class helper:
         self.head.addTask("configure HappyGuide")
 
     def next(self):
-        if self.head.next == None:
+        if self.head.next is None:
             self.head.next = day()
 
     def advance(self):
         self.next()
-        head = head.next
+        self.head = self.head.next
 
     @staticmethod
     def addDaily(task):
@@ -47,20 +59,43 @@ class helper:
 
     @staticmethod
     def removeDaily(task):
-        del helper.daily[task]
+        if task in helper.daily:
+            del helper.daily[task]
 
+    @staticmethod
+    def getDaily(task):
+        for i in helper.daily:
+            print(i)
 
 def mainLoop():
     h = helper()
     while True:
-        s = input("d to get info on today, c to complete tasks, t to get add tasks to tomorrow, a to advance to tomorrow, x to exit\n")
+        s = input("d to get info on today, c to update today's tasks, t to get add tasks to tomorrow, a to advance to tomorrow, o to edit daily tasks, x to exit\n")
         if s == "c":
-            s = input("what task would you like to update\n")
-            h.head.completeTask(s)
+            t = input("what task would you like to update\n")
+            b = input("t for completed, f for incomplete\n")
+            if b == "t":
+                h.head.updateTask(t, True)
+            else:
+                h.head.updateTask(t, False)
         elif s == "d":
             h.head.getTasks()
-        elif s == "x":
+        elif s == "o":
 
+            while True:
+                s = input("r to remove a daily task, p to print daily tasks, a to add a daily task, x to go back")
+                if s == "r":
+                    s = input("what task would you like to remove\n")
+                    helper.removeDaily(s)
+                elif s == "p":
+                    helper.getDaily()
+                elif s == "a":
+                    s = input("what task would you like to add\n")
+                    helper.addDaily(s)
+                elif s == "x":
+                    break
+        
+        elif s == "x":
             break
         elif s == "t":
             s = input("what task would you like to add\n")
