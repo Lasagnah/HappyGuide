@@ -63,7 +63,7 @@ class helper:
             del helper.daily[task]
 
     @staticmethod
-    def getDaily(task):
+    def getDaily():
         for i in helper.daily:
             print(i)
 
@@ -83,7 +83,7 @@ def mainLoop():
         elif s == "o":
 
             while True:
-                s = input("press r to remove a daily task, p to print daily tasks, a to add a daily task, x to go back")
+                s = input("press r to remove a daily task, p to print daily tasks, a to add a daily task, x to go back\n")
                 if s == "r":
                     s = input("what task would you like to remove?\n")
                     helper.removeDaily(s)
@@ -101,7 +101,7 @@ def mainLoop():
             break
         elif s == "t":
             s = input("what task would you like to add?\n")
-            h.head.next()
+            h.next()
             h.head.next.addTask(s)
         elif s == "a":
             h.advance()
