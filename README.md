@@ -34,15 +34,15 @@ We take input from the user, then depending upon the user's input we do one of a
 ## Test Cases
 As for the test cases in testcases.py, they will do the following:
 * TestCase1 will test initializing a helper object, and will test printing the tasks of the helper object.
-TestCase 1 will return 
+TestCase 1 will return \
 configure HappyGuide : incomplete
 * TestCase2 will test adding tasks to a helper object.
-TestCase2 will return 
-configure HappyGuide : incomplete
+TestCase2 will return \
+configure HappyGuide : incomplete \
 test HappyGuide : completed
 * TestCase3 will test the usage of daily tasks, as well as the generation and advancement to future days.
-TestCase3 will return 
-Get up out of bed : incomplete
+TestCase3 will return \
+Get up out of bed : incomplete 
 ## Discussion
 As for application of course materials, we clearly applied principles of object oriented programming through the creation of the day and helper classes, with their multiple different types of variables. 
 One thing that we did encounter that could be improved is the specific types of variables that we used. For example, we used class level variables for our ratings and daily lists. Realistically, they didn't need to be class level variables and could instead just be variables within the mainLoop. Because they are class level variables, it isn't possible to have multiple instances running with different data for each of these variables which could potentially become a problem. There weren't many limitations encountered during the project.
